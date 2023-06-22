@@ -21,11 +21,6 @@ mybatis:
     use-generated-keys: true
     #使用列标签替换列别名 默认未true
     use-column-label: true
-
-
-
-
-
 #端口配置
 server:
   port: 8081
