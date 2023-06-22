@@ -1,0 +1,9 @@
+#springboot(2.7.12)版本和swagger版本(2.9.2)不兼容问题
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+#端口配置
+server:
+  port: 8081
+

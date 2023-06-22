@@ -1,0 +1,101 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.demo</groupId>
+  <artifactId>dev</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <!--packaging的默认打包类型是jar，但是所有的父工程打包方式都需要设置成pom-->
+  <packaging>pom</packaging>
+
+  <name>dev</name>
+  <url>http://maven.apache.org</url>
+  <modules>
+    <module>common-lib</module>
+    <module>entity-service</module>
+    <module>base-service</module>
+  </modules>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <!--当前是父工程-->
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.7.12</version>
+    <relativePath/>
+  </parent>
+
+  <!--依赖配置：目前这里的配置的依赖所引入的jar包在此工程下的所有子工程都会被引入-->
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <!--Swagger2.9.2使用下面配置-->
+    <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger2</artifactId>
+      <version>2.9.2</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger-ui</artifactId>
+      <version>2.9.2</version>
+    </dependency>
+    <!--Swagger3.0.0使用下面配置-->
+    <!--    <dependency>-->
+    <!--      <groupId>io.springfox</groupId>-->
+    <!--      <artifactId>springfox-boot-starter</artifactId>-->
+    <!--      <version>3.0.0</version>-->
+    <!--    </dependency>-->
+  </dependencies>
+
+  <!--依赖管理：
+           这里的配置的依赖只是对依赖版本的管理配置，子工程并不会直接引入
+           如果子工程要需要引入只需要加入如下标签：
+            <dependency>
+              <groupId>mysql</groupId>
+              <artifactId>mysql-connector-java</artifactId>
+            </dependency>
+           这样就可以引入mysql的驱动了，这样的好处就是可以在父工程统一一下整个工程的jar包依赖版本
+           而且如果有的工程不需要一些jar就可以不进行引入
+           -->
+  <dependencyManagement>
+    <dependencies>
+      <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter</artifactId>
+        <version>2.7.12</version>
+      </dependency>
+      <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+        <version>2.7.12</version>
+      </dependency>
+      <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.28</version>
+      </dependency>
+
+
+      <dependency>
+        <groupId>com.main</groupId>
+        <artifactId>common-lib</artifactId>
+        <version>1.0.0</version>
+        <scope>compile</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+</project>
