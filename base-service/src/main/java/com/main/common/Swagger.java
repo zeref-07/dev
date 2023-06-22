@@ -28,7 +28,7 @@ public class Swagger {
                 .title("api文档")
                 .description("搭建一个spring boot+mybatis+maven+swagger测试项目")
                 .version("1.0.0")
-                .termsOfServiceUrl("http://localhost:18902/swagger-ui.html")
+                .termsOfServiceUrl("http://localhost::8081/swagger-ui.html")
                 .build();
     }
 }

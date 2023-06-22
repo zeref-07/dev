@@ -1,8 +1,31 @@
-#springboot(2.7.12)版本和swagger版本(2.9.2)不兼容问题
 spring:
+  #springboot(2.7.12)版本和swagger版本(2.9.2)不兼容问题
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+  #数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #url: jdbc:mysql://localhost:3307/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    url: jdbc:mysql://localhost:3307/dev
+    username: admin
+    password: password
+#Mybatis配置
+mybatis:
+#  config-location: classpath:mybatis/mybatis-config.xml  直接在集成在yml下面configuration配置即可
+  mapper-locations: classpath:mapper/*.xml      # mapper映射文件
+  configuration:
+    #开启驼峰式命名转换：Table{create_time} -> Entity{createTime}
+    map-underscore-to-camel-case: true
+    #使用jdbc的getGeneratedKeys获取数据库自增主键值
+    use-generated-keys: true
+    #使用列标签替换列别名 默认未true
+    use-column-label: true
+
+
+
+
+
 #端口配置
 server:
   port: 8081
